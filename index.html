@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <link href="styles/styles.css" rel="stylesheet">
+    <title>JustStreamIt</title>
+  </head>
+
+  <body>
+    <header>
+      <h1>JustStreamIt</h1>
+      <div id="status">
+        <div id="status-indicator"></div>
+        <span id="status-text">Vérification du statut...</span>
+        <script src="script.js"></script>
+      </div>  
+    </header>
+
+    <main>
+      <section class="best-rating">
+        <img id="bestMovieImage" alt="Meilleur Film" src="">
+        <div id="bestMovieBoxInfo">
+          <h1>Best rating:</h1>
+          <h3 id="bestMovieScore">RATE</h3>
+          <h2>Title:</h2>
+          <h3 id="bestMovieTitle">TITLE</h3>
+          <h2>Category:</h2>
+          <h3 id="bestMovieCategory">CATEGORY</h3>
+          <button id="buttonPlayBestMovie" onclick="playBestMovie()">Play</button>
+          <button id="buttonBestMovie">More info</button>
+          <h2>Description:</h2>
+          <h3 id="bestMovieDescription">Description</h3>
+        </div>
+
+      </section>
+      <div class="divider"></div>
+      <section class="others-category">
+        <section class="best-rating-films">
+          <h1>Top Rated Movies</h1>
+          <div id="carousel-movies">
+            <div id="movies-container" class="carousel">
+              <!--Les images des films seront ajoutées ici dynamiquement-->
+            </div>
+            <button id="prevBtnBestRatingFilms" class="carousel-btn carousel-btn-left">&lt;</button>
+            <button id="nextBtnBestRatingFilms" class="carousel-btn carousel-btn-right">&gt;</button>
+          </div>
+        </section>
+        <div class="little-divider"></div>
+        <section class="category-1">
+          <h1>Romance</h1>
+          <div id="carousel-movies">
+            <div id="movies-container-romance" class="carousel">
+              <!--Les images des films seront ajoutées ici dynamiquement-->
+            </div>
+            <button id="prevBtnCategory1" class="carousel-btn carousel-btn-left">&lt;</button>
+            <button id="nextBtnCategory1" class="carousel-btn carousel-btn-right">&gt;</button>
+          </div>
+        </section>
+        <div class="little-divider"></div>
+        <section class="category-2">
+          <h1>Biography</h1>
+          <div id="carousel-movies">
+            <div id="movies-container-biography" class="carousel">
+              <!--Les images des films seront ajoutées ici dynamiquement-->
+            </div>
+            <button id="prevBtnCategory2" class="carousel-btn carousel-btn-left">&lt;</button>
+            <button id="nextBtnCategory2" class="carousel-btn carousel-btn-right">&gt;</button>
+          </div>
+        </section>
+        <div class="little-divider"></div>
+        <section class="category-3">
+          <h1>Drama</h1>
+          <div id="carousel-movies">
+            <div id="movies-container-drama" class="carousel">
+              <!--Les images des films seront ajoutées ici dynamiquement-->
+            </div>
+            <button id="prevBtnCategory3" class="carousel-btn carousel-btn-left">&lt;</button>
+            <button id="nextBtnCategory3" class="carousel-btn carousel-btn-right">&gt;</button>
+          </div>
+        </section>
+      </section>
+      <div class="divider"></div>
+    </main>
+
+    <footer></footer>
+  </body>
+</html>

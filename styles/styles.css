@@ -1,0 +1,193 @@
+
+  
+  
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+    background-color: black;
+    color: white;
+    overflow-x: hidden;
+
+  }
+main {
+    padding-left: 10%;
+    padding-right: 10%;
+}
+header {
+    display: flex;
+    resize: horizontal;
+    justify-content: center;
+    font-size: 1.5vw;
+    border-bottom: 2px solid #7d41d0; /* Couleur de la ligne de fond */
+}
+
+nav {
+    display: flex;
+    resize: horizontal;
+    margin: 5em;
+}
+.divider {
+    width: 200px;
+    height: 2px;
+    background: #6741d0;
+    margin: 0 auto;
+}
+.little-divider {
+    width: 100px;
+    height: 2px;
+    background: #6741d0;
+    margin: 0 auto;
+}
+#status {
+    margin: 1em;
+}
+#status-indicator {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    margin-bottom: 1em;
+    margin-right: 0.3em;
+    margin-left: auto;
+    display: inline-block;
+  }
+
+.online {
+    background-color: green;
+  }
+
+.offline {
+    background-color: red;
+  }
+
+h1 {
+    background: linear-gradient(to bottom, #c850c0, #4158d0);
+    -webkit-background-clip: text;
+    color: transparent;
+}
+h2 {
+    background: linear-gradient(to bottom, #6f2c6a, #1e2a64);
+    -webkit-background-clip: text;
+    color: transparent;
+}
+h3 {
+    color: #b7aad5;
+    font-size: medium;
+}
+button {
+    margin-top: 2%;
+    
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 16px;
+    text-align: center;
+    text-decoration: none;
+    border-image: linear-gradient(to bottom, #6f2c6a, #1e2a64) 1; /* Dégradé pour le liseré */
+    font-weight: bold;
+    color: transparent; /* Couleur du texte transparente */
+    background: linear-gradient(to bottom, #6f2c6a, #1e2a64); /* Fond avec dégradé */
+    -webkit-background-clip: text; /* Pour appliquer le dégradé au texte */
+    cursor: pointer;
+    
+    transition: border-image 0.3s;
+}
+
+button:hover {
+    border-image: linear-gradient(to bottom, #c850c0, #4158d0) 1; /* Dégradé pour le liseré */
+    color: transparent; /* Couleur du texte transparente */
+    background: linear-gradient(to bottom, #c850c0, #4158d0); /* Fond avec dégradé */
+    -webkit-background-clip: text; /* Pour appliquer le dégradé au texte */
+}
+.best-rating {
+    /*border: 5px solid red;*/
+    margin: 3em;
+    width: 90%;
+    height: 530px;
+}
+img {
+    border-radius: 4%;
+    
+}
+#bestMovieImage {
+    /*border: 5px solid blue;*/
+    margin-top: 1%;
+    float: right;
+    height: 93%;
+    width: 90%;
+    background: #41d073;
+    filter: blur(4px);
+    object-fit: cover;
+    z-index:-1;
+    border-radius: 2%;
+    box-shadow: 0 0 0 2px black;
+}
+
+
+
+#bestMovieBoxInfo {
+    margin-right: 3em;
+    float: left;
+    /*border: 5px solid blue;*/
+    background: linear-gradient(to right, #000000, #000000e3, #000000b7, #00000073, #00000007);
+    padding: 10px;
+    width: 800px;
+    height: 31em;
+    position: absolute;
+}
+
+.best-rating-films,
+.category-1, 
+.category-2, 
+.category-3 {
+    margin: 1em;
+    /*border: 5px solid red;*/
+    padding-left: 2em;
+    width: 94%;
+    height: clamp(100px,650px,800px);
+}
+.best-rating-films h1,
+.category-1 h1, 
+.category-2 h1, 
+.category-3 h1 {
+    font-size: 25px;
+}
+
+#carousel-movies {
+    /*border: 5px solid blue;*/
+    width: 95%;
+    height: 500px;
+
+}
+
+.carousel {
+    /*border: 5px solid pink;*/
+    overflow: hidden;
+    white-space: nowrap;
+    position: absolute;
+    width: 64%;
+    height: 480px;
+    margin: 0% 2%;
+    margin-left: 4.25%;
+}
+
+
+
+
+.carousel-btn-right {
+    left: 82%;
+} 
+.carousel  img {
+    margin: 0 0.9em;
+    display: inline-block;
+    width: auto; /* Ajustez la largeur selon vos besoins */
+    height: 100%; /* Ajustez la hauteur selon vos besoins */
+    z-index:-1;
+}
+.carousel-btn {
+    position: absolute;
+    cursor: pointer;
+    outline: none;
+    align-self: stretch;
+    height: 39%;
+    margin-top: 0;
+
+}
