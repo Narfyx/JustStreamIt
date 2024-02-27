@@ -8,23 +8,19 @@ body {
     color: white;
     overflow-x: hidden;
 
-  }
+}
 main {
     padding-left: 10%;
     padding-right: 10%;
 }
 header {
-    display: flex;
     resize: horizontal;
-    justify-content: center;
     font-size: 1.5vw;
     border-bottom: 2px solid #7d41d0; /* Couleur de la ligne de fond */
-}
-
-nav {
+    width: 100%;
     display: flex;
-    resize: horizontal;
-    margin: 5em;
+    align-items: center;
+    justify-content: center;
 }
 .divider {
     width: 200px;
@@ -40,14 +36,14 @@ nav {
 }
 #status {
     margin: 1em;
+    right: 0;
+    float: right;
+    
 }
 #status-indicator {
-    width: 20px;
-    height: 20px;
+    width: 15px;
+    height: 15px;
     border-radius: 50%;
-    margin-bottom: 1em;
-    margin-right: 0.3em;
-    margin-left: auto;
     display: inline-block;
   }
 
@@ -58,6 +54,19 @@ nav {
 .offline {
     background-color: red;
   }
+#status-text{
+    right: 0;
+    float: right;
+    margin-left: 0.5em;
+}
+a {
+    background: linear-gradient(to bottom, #c850c0, #4158d0);
+    -webkit-background-clip: text;
+    color: transparent;
+    margin: 1em;
+    right: 0;
+    float: right;
+}
 
 h1 {
     background: linear-gradient(to bottom, #c850c0, #4158d0);
@@ -72,6 +81,16 @@ h2 {
 h3 {
     color: #b7aad5;
     font-size: medium;
+}
+
+#title{
+    margin: 1em;
+    width: 50%;
+    height: auto;
+}
+#headerBox{
+    align-items: center;
+    
 }
 button {
     margin-top: 2%;
@@ -190,4 +209,21 @@ img {
     height: 39%;
     margin-top: 0;
 
+}
+
+#modal-container{
+    display: none;
+    z-index: +1;
+    background-color: black;
+    border-image: linear-gradient(to bottom, #6f2c6a, #1e2a64) 1;
+    color: white;
+    width: 900px;
+    height: auto;
+    justify-content: center;
+    align-items: center;
+}
+#modal-closeBtn {
+    margin: 1em;
+    right: 0;
+    float: right;
 }

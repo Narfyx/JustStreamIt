@@ -41,18 +41,30 @@ const populateModal = async (movie) => {
   const modalDetailsTitle = document.getElementById("modal-details-title");
   const modalDetailsGenre = document.getElementById("modal-details-genre");
   const modalDetailsReleaseDate = document.getElementById("modal-details-releaseDate");
-  const modalDetailsRating = document.getElementById("modal-details-rating");
   const modalDetailsImdb = document.getElementById("modal-details-imdb");
   const modalDetailsDirector = document.getElementById("modal-details-director");
   const modalDetailsActors = document.getElementById("modal-details-actors");
   const modalDetailsLength = document.getElementById("modal-details-length");
   const modalDetailsCountry = document.getElementById("modal-details-country");
-  const modalDetailsBoxOffice = document.getElementById("modal-details-boxOffice");
   const modalDetailsDescription = document.getElementById("modal-details-description");
 
   const movieDetails = await fetchMovies(movie.id);
   console.log(movieDetails);
   modalContainer.style.display = "flex";
+
+  const centrerBoiteDialogue = () => {
+    const scrollTop = window.scrollY || window.pageYOffset || document.documentElement.scrollTop;
+    const windowHeight = window.innerHeight;
+    const modalHeight = modalContainer.offsetHeight;
+    const topPosition = scrollTop + (windowHeight - modalHeight) / 2;
+    
+    modalContainer.style.top = `${topPosition}px`;
+  };
+
+  // Afficher la boîte de dialogue et centrer après un court délai pour laisser le temps au DOM de se mettre à jour
+  setTimeout(() => {
+    centrerBoiteDialogue();
+  }, 100);
 
   const closeModal = () => {
     modalContainer.style.display = "none";
@@ -64,16 +76,14 @@ const populateModal = async (movie) => {
   modalDetailsTitle.textContent = movieDetails.original_title;
   modalDetailsGenre.textContent = movieDetails.genres.join(", ");
   modalDetailsReleaseDate.textContent = movieDetails.date_published;
-  modalDetailsRating.textContent = movieDetails.rated;
   modalDetailsImdb.textContent = movieDetails.imdb_score;
   modalDetailsDirector.textContent = movieDetails.directors.join(", ");
   modalDetailsActors.textContent = movieDetails.actors.join(", ");
   modalDetailsLength.textContent = movieDetails.duration + "min";
   modalDetailsCountry.textContent = movieDetails.countries.join(", ");
-  modalDetailsBoxOffice.textContent = movieDetails.worldwide_gross_income ?
-    `$${movieDetails.worldwide_gross_income}` : '';
   modalDetailsDescription.textContent = movieDetails.long_description;
 };
+
 
 
 const fetchMovies = async (filter) => {
@@ -104,12 +114,11 @@ const searchBestMovie = async () => {
     const titleElement = document.getElementById('bestMovieTitle');
     const categoryElement = document.getElementById('bestMovieCategory');
     const scoreElement = document.getElementById('bestMovieScore');
-
+    
 
     const urlElement = await fetchMovies(bestMovie.url.split('/').pop());
-    
     const descriptionElement = document.getElementById('bestMovieDescription');
-    
+    const moreInfoBtn = document.getElementById('buttonBestMovie');
     
     imgElement.src = bestMovie.image_url;
     titleElement.innerText = bestMovie.title;
@@ -117,6 +126,8 @@ const searchBestMovie = async () => {
     scoreElement.innerText = bestMovie.imdb_score;
     
     descriptionElement.innerText = urlElement.description;
+    
+    moreInfoBtn.addEventListener("click", () => populateModal(bestMovie));
   } catch (error) {
     console.error(error);
   }
@@ -207,7 +218,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 function playBestMovie() {
   // Redirige vers l'URL spécifiée lorsque le bouton est cliqué
-  window.location.href = 'https://www.youtube.com/watch?v=dQw4w9WgXcQ';
+  window.location.href = 'https://youtu.be/kjIk-cRU0mk';
 }
 
 

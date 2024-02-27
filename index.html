@@ -8,12 +8,17 @@
 
   <body>
     <header>
-      <h1>JustStreamIt</h1>
-      <div id="status">
-        <div id="status-indicator"></div>
-        <span id="status-text">Vérification du statut...</span>
-        <script src="script.js"></script>
-      </div>  
+      <h1 id="title">JustStreamIt</h1>
+      <div id="headerBox">
+        <a id="accueil">Accueil</a>
+        <a id="categories">Catégories</a>
+        <div id="status">
+          <div id="status-indicator"></div>
+          <span id="status-text">Vérification du statut...</span>
+          <script src="script.js"></script>
+        </div> 
+      </div>
+       
     </header>
 
     <main>
@@ -34,7 +39,7 @@
 
       </section>
       <div class="divider"></div>
-      <container id="modal-container">
+      <dialog id="modal-container">
         <div id="modal">
           <button id="modal-closeBtn">X</button>
           <div id="modal-cover">
@@ -49,10 +54,6 @@
             <li>
               <span class="modal-subtitle">Release date: </span>
               <span id="modal-details-releaseDate"></span>
-            </li>
-            <li>
-              <span class="modal-subtitle">Rating: </span>
-              <span id="modal-details-rating"></span>
             </li>
             <li>
               <span class="modal-subtitle">Imbd score: </span>
@@ -74,17 +75,13 @@
               <span class="modal-subtitle">Country: </span>
               <span id="modal-details-country"></span>
             </li>
-            <li>
-              <span class="modal-subtitle">Box office: </span>
-              <span id="modal-details-boxOffice"></span>
-            </li>
             <li id="details-description">
               <span class="modal-subtitle">Summary: </span>
               <span id="modal-details-description"></span>
             </li>
           </ul>
         </div>
-      </container>
+      </dialog>
       <section class="others-category">
         <section class="best-rating-films">
           <h1>Top Rated Movies</h1>
