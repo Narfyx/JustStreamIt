@@ -81,67 +81,7 @@ const searchBestMovie = async () => {
   }
 };
 
-
-const searchTopRatedMovies = async () => {
-  try {
-    let movies = [];
-    let page = 1;
-
-    while (movies.length < 7) {
-      const fetchedBestMovies = await fetchMovies(`?page=${page}&sort_by=-imdb_score`);
-      const bestMovies = fetchedBestMovies.results;
-
-      movies = movies.concat(bestMovies);
-
-      if (fetchedBestMovies.next) {
-        page++;
-      } else {
-        break;
-      }
-    }
-
-    const moviesContainer = document.getElementById('movies-container');
-    moviesContainer.innerHTML = ''; // Nettoyer le contenu précédent
-
-    movies.slice(0, 7).forEach(movie => {
-      const img = document.createElement('img');
-      img.src = movie.image_url;
-      img.alt = movie.title;
-      moviesContainer.appendChild(img);
-    });
-
-    // Ajouter la logique pour les boutons de navigation
-    const prevBtn = document.getElementById('prevBtnBestRatingFilms');
-    const nextBtn = document.getElementById('nextBtnBestRatingFilms');
-    let currentIndex = 0;
-
-    prevBtn.addEventListener('click', () => {
-      if (currentIndex > 0) {
-        currentIndex--;
-        moviesContainer.scrollTo({
-          left: moviesContainer.children[currentIndex].offsetLeft,
-          behavior: 'smooth'
-        });
-      }
-    });
-
-    nextBtn.addEventListener('click', () => {
-      if (currentIndex < moviesContainer.children.length - 1) {
-        currentIndex++;
-        moviesContainer.scrollTo({
-          left: moviesContainer.children[currentIndex].offsetLeft,
-          behavior: 'smooth'
-        });
-      }
-    });
-
-  } catch (error) {
-    console.error(error);
-  }
-};
-
-
-const searchTopRatedCategory1Movies = async () => {
+const searchTopRatedCategoryMovies = async (idPrevBtn, idNextBtn, category ,elementId) => {
 
   
   try {
@@ -149,7 +89,7 @@ const searchTopRatedCategory1Movies = async () => {
     let page = 1;
 
     while (movies.length < 7) {
-      const fetchedBestMovies = await fetchMovies(`?genre=Romance&page=${page}&sort_by=-imdb_score`);
+      const fetchedBestMovies = await fetchMovies(`?${category}page=${page}&sort_by=-imdb_score`);
       const bestMovies = fetchedBestMovies.results;
 
       movies = movies.concat(bestMovies);
@@ -160,7 +100,7 @@ const searchTopRatedCategory1Movies = async () => {
         break;
       }
     }
-    const moviesContainer = document.getElementById('movies-container-romance');
+    const moviesContainer = document.getElementById(elementId);
     moviesContainer.innerHTML = ''; // Nettoyer le contenu précédent
 
     movies.slice(0, 7).forEach(movie => {
@@ -171,128 +111,8 @@ const searchTopRatedCategory1Movies = async () => {
     });
 
     // Ajouter la logique pour les boutons de navigation
-    const prevBtn = document.getElementById('prevBtnCategory1');
-    const nextBtn = document.getElementById('nextBtnCategory1');
-    let currentIndex = 0;
-
-    prevBtn.addEventListener('click', () => {
-      if (currentIndex > 0) {
-        currentIndex--;
-        moviesContainer.scrollTo({
-          left: moviesContainer.children[currentIndex].offsetLeft,
-          behavior: 'smooth'
-        });
-      }
-    });
-
-    nextBtn.addEventListener('click', () => {
-      if (currentIndex < moviesContainer.children.length - 1) {
-        currentIndex++;
-        moviesContainer.scrollTo({
-          left: moviesContainer.children[currentIndex].offsetLeft,
-          behavior: 'smooth'
-        });
-      }
-    });
-
-  } catch (error) {
-    console.error(error);
-  }
-};
-
-
-const searchTopRatedCategory2Movies = async () => {
-
-  
-  try {
-    let movies = [];
-    let page = 1;
-
-    while (movies.length < 7) {
-      const fetchedBestMovies = await fetchMovies(`?genre=Biography&page=${page}&sort_by=-imdb_score`);
-      const bestMovies = fetchedBestMovies.results;
-
-      movies = movies.concat(bestMovies);
-
-      if (fetchedBestMovies.next) {
-        page++;
-      } else {
-        break;
-      }
-    }
-    const moviesContainer = document.getElementById('movies-container-biography');
-    moviesContainer.innerHTML = ''; // Nettoyer le contenu précédent
-
-    movies.slice(0, 7).forEach(movie => {
-      const img = document.createElement('img');
-      img.src = movie.image_url;
-      img.alt = movie.title;
-      moviesContainer.appendChild(img);
-    });
-
-    // Ajouter la logique pour les boutons de navigation
-    const prevBtn = document.getElementById('prevBtnCategory2');
-    const nextBtn = document.getElementById('nextBtnCategory2');
-    let currentIndex = 0;
-
-    prevBtn.addEventListener('click', () => {
-      if (currentIndex > 0) {
-        currentIndex--;
-        moviesContainer.scrollTo({
-          left: moviesContainer.children[currentIndex].offsetLeft,
-          behavior: 'smooth'
-        });
-      }
-    });
-
-    nextBtn.addEventListener('click', () => {
-      if (currentIndex < moviesContainer.children.length - 1) {
-        currentIndex++;
-        moviesContainer.scrollTo({
-          left: moviesContainer.children[currentIndex].offsetLeft,
-          behavior: 'smooth'
-        });
-      }
-    });
-
-  } catch (error) {
-    console.error(error);
-  }
-};
-
-
-const searchTopRatedCategory3Movies = async () => {
-
-  
-  try {
-    let movies = [];
-    let page = 1;
-
-    while (movies.length < 7) {
-      const fetchedBestMovies = await fetchMovies(`?genre=Drama&page=${page}&sort_by=-imdb_score`);
-      const bestMovies = fetchedBestMovies.results;
-
-      movies = movies.concat(bestMovies);
-
-      if (fetchedBestMovies.next) {
-        page++;
-      } else {
-        break;
-      }
-    }
-    const moviesContainer = document.getElementById('movies-container-drama');
-    moviesContainer.innerHTML = ''; // Nettoyer le contenu précédent
-
-    movies.slice(0, 7).forEach(movie => {
-      const img = document.createElement('img');
-      img.src = movie.image_url;
-      img.alt = movie.title;
-      moviesContainer.appendChild(img);
-    });
-
-    // Ajouter la logique pour les boutons de navigation
-    const prevBtn = document.getElementById('prevBtnCategory3');
-    const nextBtn = document.getElementById('nextBtnCategory3');
+    const prevBtn = document.getElementById(idPrevBtn);
+    const nextBtn = document.getElementById(idNextBtn);
     let currentIndex = 0;
 
     prevBtn.addEventListener('click', () => {
@@ -327,19 +147,19 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 document.addEventListener('DOMContentLoaded', () => {
-  searchTopRatedMovies();
+  searchTopRatedCategoryMovies('prevBtnBestRatingFilms', 'nextBtnBestRatingFilms', '', 'movies-container');
 });
 
 document.addEventListener('DOMContentLoaded', () => {
-  searchTopRatedCategory1Movies();
+  searchTopRatedCategoryMovies('prevBtnCategory1', 'nextBtnCategory1', 'genre=Romance&', 'movies-container-romance');
 });
 
 document.addEventListener('DOMContentLoaded', () => {
-  searchTopRatedCategory2Movies();
+  searchTopRatedCategoryMovies('prevBtnCategory2', 'nextBtnCategory2', 'genre=Biography&', 'movies-container-biography');
 });
 
 document.addEventListener('DOMContentLoaded', () => {
-  searchTopRatedCategory3Movies();
+  searchTopRatedCategoryMovies('prevBtnCategory3', 'nextBtnCategory3', 'genre=Drama&', 'movies-container-drama');
 });
 
 function playBestMovie() {
