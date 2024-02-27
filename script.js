@@ -34,6 +34,47 @@ document.addEventListener('DOMContentLoaded', () => {
   checkApiStatus();
 });
 
+const populateModal = async (movie) => {
+  const modalContainer = document.getElementById("modal-container");
+  const modalCloseBtn = document.getElementById("modal-closeBtn");
+  const modalCoverImg = document.getElementById("modal-cover-img");
+  const modalDetailsTitle = document.getElementById("modal-details-title");
+  const modalDetailsGenre = document.getElementById("modal-details-genre");
+  const modalDetailsReleaseDate = document.getElementById("modal-details-releaseDate");
+  const modalDetailsRating = document.getElementById("modal-details-rating");
+  const modalDetailsImdb = document.getElementById("modal-details-imdb");
+  const modalDetailsDirector = document.getElementById("modal-details-director");
+  const modalDetailsActors = document.getElementById("modal-details-actors");
+  const modalDetailsLength = document.getElementById("modal-details-length");
+  const modalDetailsCountry = document.getElementById("modal-details-country");
+  const modalDetailsBoxOffice = document.getElementById("modal-details-boxOffice");
+  const modalDetailsDescription = document.getElementById("modal-details-description");
+
+  const movieDetails = await fetchMovies(movie.id);
+  console.log(movieDetails);
+  modalContainer.style.display = "flex";
+
+  const closeModal = () => {
+    modalContainer.style.display = "none";
+  };
+
+  modalCloseBtn.addEventListener("click", closeModal);
+
+  modalCoverImg.setAttribute("src", movie.image_url);
+  modalDetailsTitle.textContent = movieDetails.original_title;
+  modalDetailsGenre.textContent = movieDetails.genres.join(", ");
+  modalDetailsReleaseDate.textContent = movieDetails.date_published;
+  modalDetailsRating.textContent = movieDetails.rated;
+  modalDetailsImdb.textContent = movieDetails.imdb_score;
+  modalDetailsDirector.textContent = movieDetails.directors.join(", ");
+  modalDetailsActors.textContent = movieDetails.actors.join(", ");
+  modalDetailsLength.textContent = movieDetails.duration + "min";
+  modalDetailsCountry.textContent = movieDetails.countries.join(", ");
+  modalDetailsBoxOffice.textContent = movieDetails.worldwide_gross_income ?
+    `$${movieDetails.worldwide_gross_income}` : '';
+  modalDetailsDescription.textContent = movieDetails.long_description;
+};
+
 
 const fetchMovies = async (filter) => {
   try {
@@ -81,7 +122,7 @@ const searchBestMovie = async () => {
   }
 };
 
-const searchTopRatedCategoryMovies = async (idPrevBtn, idNextBtn, category ,elementId) => {
+const searchTopRatedCategoryMovies = async (idPrevBtn, idNextBtn, category, elementId) => {
 
   
   try {
@@ -108,9 +149,10 @@ const searchTopRatedCategoryMovies = async (idPrevBtn, idNextBtn, category ,elem
       img.src = movie.image_url;
       img.alt = movie.title;
       moviesContainer.appendChild(img);
+      img.addEventListener("click", () => populateModal(movie));
     });
-
-    // Ajouter la logique pour les boutons de navigation
+    
+    // Ajouter la logique pour les boutons
     const prevBtn = document.getElementById(idPrevBtn);
     const nextBtn = document.getElementById(idNextBtn);
     let currentIndex = 0;
@@ -140,6 +182,7 @@ const searchTopRatedCategoryMovies = async (idPrevBtn, idNextBtn, category ,elem
   }
   
 };
+
 
 
 document.addEventListener('DOMContentLoaded', () => {
