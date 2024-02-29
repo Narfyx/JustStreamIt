@@ -1,135 +1,141 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <link href="styles/styles.css" rel="stylesheet">
-    <title>JustStreamIt</title>
-  </head>
+<head>
+  <meta charset="utf-8">
+  <link href="styles/styles.css" rel="stylesheet">
+  <title>JustStreamIt</title>
+</head>
 
-  <body>
-    <header>
-      <h1 id="title">JustStreamIt</h1>
-      <div id="headerBox">
-        <a id="accueil">Accueil</a>
-        <a id="categories">Catégories</a>
-        <div id="status">
-          <div id="status-indicator"></div>
-          <span id="status-text">Vérification du statut...</span>
-          <script src="script.js"></script>
-        </div> 
+<body>
+  <header>
+    <h1 id="title">JustStreamIt</h1>
+    <div id="headerBox">
+      <a id="accueil">Accueil</a>
+      <a id="categories">Catégories</a>
+      <div id="status">
+        <div id="status-indicator"></div>
+        <span id="status-text">Vérification du statut...</span>
+        <script src="script.js"></script>
+      </div> 
+    </div>
+  </header>
+
+  <main>
+    <section class="best-rating">
+      <img id="bestMovieImage" alt="Meilleur Film" src="/img/fond-vert.jpg">
+      <div id="bestMovieBoxInfo">
+        <h2>Best rating:</h2>
+        <h4 id="bestMovieScore">RATE</h4>
+        <h3>Title:</h3>
+        <h4 id="bestMovieTitle">TITLE</h4>
+        <h3>Category:</h3>
+        <h4 id="bestMovieCategory">CATEGORY</h4>
+        <button id="buttonPlayBestMovie" onclick="playBestMovie()">Play</button>
+        <button id="buttonBestMovie">More info</button>
+        <h3>Description:</h3>
+        <h4 id="bestMovieDescription">Description</h4>
       </div>
-       
-    </header>
+    </section>
 
-    <main>
-      <section class="best-rating">
-        <img id="bestMovieImage" alt="Meilleur Film" src="">
-        <div id="bestMovieBoxInfo">
-          <h1>Best rating:</h1>
-          <h3 id="bestMovieScore">RATE</h3>
-          <h2>Title:</h2>
-          <h3 id="bestMovieTitle">TITLE</h3>
-          <h2>Category:</h2>
-          <h3 id="bestMovieCategory">CATEGORY</h3>
-          <button id="buttonPlayBestMovie" onclick="playBestMovie()">Play</button>
-          <button id="buttonBestMovie">More info</button>
-          <h2>Description:</h2>
-          <h3 id="bestMovieDescription">Description</h3>
+    <div class="divider"></div>
+
+    <dialog id="modal-container">
+      <div id="modal">
+        <button id="modal-closeBtn">X</button>
+        <div id="modal-cover">
+          <img id="modal-cover-img" alt="None" src="/img/fond-vert.jpg">
         </div>
+        <h2 id="modal-details-title">Title</h2>
+        <ul id="modal-details">
+          <li>
+            <span class="modal-subtitle">Genre(s): </span>
+            <span id="modal-details-genre"></span>
+          </li>
+          <li>
+            <span class="modal-subtitle">Release date: </span>
+            <span id="modal-details-releaseDate"></span>
+          </li>
+          <li>
+            <span class="modal-subtitle">Imbd score: </span>
+            <span id="modal-details-imdb"></span>
+          </li>
+          <li>
+            <span class="modal-subtitle">Director(s): </span>
+            <span id="modal-details-director"></span>
+          </li>
+          <li>
+            <span class="modal-subtitle">Actor(s): </span>
+            <span id="modal-details-actors"></span>
+          </li>
+          <li>
+            <span class="modal-subtitle">Length: </span>
+            <span id="modal-details-length"></span>
+          </li>
+          <li>
+            <span class="modal-subtitle">Country: </span>
+            <span id="modal-details-country"></span>
+          </li>
+          <li id="details-description">
+            <span class="modal-subtitle">Summary: </span>
+            <span id="modal-details-description"></span>
+          </li>
+        </ul>
+      </div>
+    </dialog>
 
-      </section>
-      <div class="divider"></div>
-      <dialog id="modal-container">
-        <div id="modal">
-          <button id="modal-closeBtn">X</button>
-          <div id="modal-cover">
-            <img id="modal-cover-img" />
-          </div>
-          <ul id="modal-details">
-            <h1 id="modal-details-title"></h1>
-            <li>
-              <span class="modal-subtitle">Genre(s): </span>
-              <span id="modal-details-genre"></span>
-            </li>
-            <li>
-              <span class="modal-subtitle">Release date: </span>
-              <span id="modal-details-releaseDate"></span>
-            </li>
-            <li>
-              <span class="modal-subtitle">Imbd score: </span>
-              <span id="modal-details-imdb"></span>
-            </li>
-            <li>
-              <span class="modal-subtitle">Director(s): </span>
-              <span id="modal-details-director"></span>
-            </li>
-            <li>
-              <span class="modal-subtitle">Actor(s): </span>
-              <span id="modal-details-actors"></span>
-            </li>
-            <li>
-              <span class="modal-subtitle">Length: </span>
-              <span id="modal-details-length"></span>
-            </li>
-            <li>
-              <span class="modal-subtitle">Country: </span>
-              <span id="modal-details-country"></span>
-            </li>
-            <li id="details-description">
-              <span class="modal-subtitle">Summary: </span>
-              <span id="modal-details-description"></span>
-            </li>
-          </ul>
+    <section class="carousel-section" id="top-rated-movies">
+      <h2>Top Rated Movies</h2>
+      <div class="carousel-movies">
+        <div id="movies-container" class="carousel">
+          <!-- Les images des films seront ajoutées ici -->
         </div>
-      </dialog>
-      <section class="others-category">
-        <section class="best-rating-films">
-          <h1>Top Rated Movies</h1>
-          <div id="carousel-movies">
-            <div id="movies-container" class="carousel">
-              <!--Les images des films seront ajoutées ici-->
-            </div>
-            <button id="prevBtnBestRatingFilms" class="carousel-btn carousel-btn-left">&lt;</button>
-            <button id="nextBtnBestRatingFilms" class="carousel-btn carousel-btn-right">&gt;</button>
-          </div>
-        </section>
-        <div class="little-divider"></div>
-        <section class="category-1">
-          <h1>Romance</h1>
-          <div id="carousel-movies">
-            <div id="movies-container-romance" class="carousel">
-              <!--Les images des films seront ajoutées ici-->
-            </div>
-            <button id="prevBtnCategory1" class="carousel-btn carousel-btn-left">&lt;</button>
-            <button id="nextBtnCategory1" class="carousel-btn carousel-btn-right">&gt;</button>
-          </div>
-        </section>
-        <div class="little-divider"></div>
-        <section class="category-2">
-          <h1>Biography</h1>
-          <div id="carousel-movies">
-            <div id="movies-container-biography" class="carousel">
-              <!--Les images des films seront ajoutées ici-->
-            </div>
-            <button id="prevBtnCategory2" class="carousel-btn carousel-btn-left">&lt;</button>
-            <button id="nextBtnCategory2" class="carousel-btn carousel-btn-right">&gt;</button>
-          </div>
-        </section>
-        <div class="little-divider"></div>
-        <section class="category-3">
-          <h1>Drama</h1>
-          <div id="carousel-movies">
-            <div id="movies-container-drama" class="carousel">
-              <!--Les images des films seront ajoutées ici-->
-            </div>
-            <button id="prevBtnCategory3" class="carousel-btn carousel-btn-left">&lt;</button>
-            <button id="nextBtnCategory3" class="carousel-btn carousel-btn-right">&gt;</button>
-          </div>
-        </section>
-      </section>
-      <div class="divider"></div>
-    </main>
+        <button id="prevBtnBestRatingFilms" class="carousel-btn carousel-btn-left">&lt;</button>
+        <button id="nextBtnBestRatingFilms" class="carousel-btn carousel-btn-right">&gt;</button>
+      </div>
+    </section>
 
-    <footer></footer>
-  </body>
+    <div class="little-divider"></div>
+
+    <section class="carousel-section" id="romance">
+      <h2>Romance</h2>
+      <div class="carousel-movies">
+        <div id="movies-container-romance" class="carousel">
+          <!-- Les images des films seront ajoutées ici -->
+        </div>
+        <button id="prevBtnCategory1" class="carousel-btn carousel-btn-left">&lt;</button>
+        <button id="nextBtnCategory1" class="carousel-btn carousel-btn-right">&gt;</button>
+      </div>
+    </section>
+
+    <div class="little-divider"></div>
+
+    <section class="carousel-section" id="biography">
+      <h2>Biography</h2>
+      <div class="carousel-movies">
+        <div id="movies-container-biography" class="carousel">
+          <!-- Les images des films seront ajoutées ici -->
+        </div>
+        <button id="prevBtnCategory2" class="carousel-btn carousel-btn-left">&lt;</button>
+        <button id="nextBtnCategory2" class="carousel-btn carousel-btn-right">&gt;</button>
+      </div>
+    </section>
+
+    <div class="little-divider"></div>
+
+    <section class="carousel-section" id="drama">
+      <h2>Drama</h2>
+      <div class="carousel-movies">
+        <div id="movies-container-drama" class="carousel">
+          <!-- Les images des films seront ajoutées ici -->
+        </div>
+        <button id="prevBtnCategory3" class="carousel-btn carousel-btn-left">&lt;</button>
+        <button id="nextBtnCategory3" class="carousel-btn carousel-btn-right">&gt;</button>
+      </div>
+    </section>
+
+    <div class="divider"></div>
+  </main>
+
+  <footer></footer>
+</body>
 </html>
