@@ -17,16 +17,16 @@ function setupApiStatusCheck() {
     statusText.innerText = isOnline ? 'API en ligne' : 'API hors ligne';
   };
 
-  // Vérifier le statut de l'API toutes les 5 secondes
+  // Check API status every 5 seconds
   setInterval(checkApiStatus, 5000);
 
-  // Vérifier le statut de l'API au chargement initial de la page
+  // Check API status on initial page load
   checkApiStatus();
 }
 
 
 const populateModal = async (movie) => {
-  // Récupération des éléments du modal
+  // Retrieving modal elements
   const modalContainer = document.getElementById("modal-container");
   const modalCloseBtn = document.getElementById("modal-closeBtn");
   const modalCoverImg = document.getElementById("modal-cover-img");
@@ -40,13 +40,13 @@ const populateModal = async (movie) => {
   const modalDetailsCountry = document.getElementById("modal-details-country");
   const modalDetailsDescription = document.getElementById("modal-details-description");
 
-  // Récupération des détails du film depuis l'API
+  // Retrieving movie details from API
   const movieDetails = await fetchMovies(movie.id);
 
-  // Affichage du modal
+  // Displaying the modal
   modalContainer.style.display = "flex";
 
-  // Fonction pour centrer le modal sur l'écran
+  // Function to center the modal on the screen
   const centerModal = () => {
     const scrollTop = window.scrollY || window.pageYOffset || document.documentElement.scrollTop;
     const windowHeight = window.innerHeight;
@@ -55,18 +55,18 @@ const populateModal = async (movie) => {
     modalContainer.style.top = `${topPosition}px`;
   };
 
-  // Centrer le modal après un court délai pour laisser le temps au DOM de se mettre à jour
+  // Center the modal after a short delay to give the DOM time to update
   setTimeout(centerModal, 100);
 
-  // Fonction pour fermer le modal
+  // Function to close the modal
   const closeModal = () => {
     modalContainer.style.display = "none";
   };
 
-  // Ajout de l'écouteur d'événement pour le bouton de fermeture du modal
+  // Added event listener for modal close button
   modalCloseBtn.addEventListener("click", closeModal);
 
-  // Remplissage des informations du modal avec les détails du film
+  // Filling modal information with movie details
   modalCoverImg.setAttribute("src", movie.image_url);
   modalDetailsTitle.textContent = movieDetails.original_title;
   modalDetailsGenre.textContent = movieDetails.genres.join(", ");
@@ -97,11 +97,11 @@ const fetchMovies = async (filter) => {
 
 const searchBestMovie = async () => {
   try {
-    // Récupération des meilleurs films
+    // Recovery of the best films
     const fetchedBestMovies = await fetchMovies("?sort_by=-imdb_score");
     const bestMovie = fetchedBestMovies.results[0];
 
-    // Sélection des éléments dans le HTML par leur ID
+    // Selecting elements in HTML by their ID
     const imgElement = document.getElementById('bestMovieImage');
     const titleElement = document.getElementById('bestMovieTitle');
     const categoryElement = document.getElementById('bestMovieCategory');
@@ -109,17 +109,17 @@ const searchBestMovie = async () => {
     const descriptionElement = document.getElementById('bestMovieDescription');
     const moreInfoBtn = document.getElementById('buttonBestMovie');
 
-    // Récupération des détails du meilleur film
+    // Retrieving Best Picture Details
     const movieDetails = await fetchMovies(bestMovie.url.split('/').pop());
 
-    // Attribution des valeurs aux éléments HTML
+    // Assigning values ​​to HTML elements
     imgElement.src = bestMovie.image_url;
     titleElement.innerText = bestMovie.title;
     categoryElement.innerText = bestMovie.genres[0];
     scoreElement.innerText = bestMovie.imdb_score;
     descriptionElement.innerText = movieDetails.description;
 
-    // Ajout de l'événement pour ouvrir le modal avec plus d'informations
+    // Added event to open modal with more information
     moreInfoBtn.addEventListener("click", () => populateModal(bestMovie));
   } catch (error) {
     console.error(error);
@@ -132,14 +132,14 @@ const searchTopRatedCategoryMovies = async (idPrevBtn, idNextBtn, category, elem
     let movies = [];
     let page = 1;
 
-    // Récupération des films de la catégorie spécifiée
+    // Recovering movies of specified category
     while (movies.length < 7) {
       const fetchedMovies = await fetchMovies(`?${category}page=${page}&sort_by=-imdb_score`);
       const currentMovies = fetchedMovies.results;
 
       movies = movies.concat(currentMovies);
 
-      // Vérification de la pagination
+      // Checking the pagination
       if (fetchedMovies.next) {
         page++;
       } else {
@@ -147,11 +147,11 @@ const searchTopRatedCategoryMovies = async (idPrevBtn, idNextBtn, category, elem
       }
     }
 
-    // Nettoyer le contenu précédent
+    // Clean up previous content
     const moviesContainer = document.getElementById(elementId);
     moviesContainer.innerHTML = '';
 
-    // Affichage des films dans le conteneur spécifié
+    // Viewing movies in the specified container
     movies.slice(0, 7).forEach(movie => {
       const img = document.createElement('img');
       img.src = movie.image_url;
@@ -160,7 +160,7 @@ const searchTopRatedCategoryMovies = async (idPrevBtn, idNextBtn, category, elem
       img.addEventListener("click", () => populateModal(movie));
     });
     
-    // Gestion des boutons de navigation
+    // Management of navigation buttons
     const prevBtn = document.getElementById(idPrevBtn);
     const nextBtn = document.getElementById(idNextBtn);
     let currentIndex = 0;
@@ -184,7 +184,7 @@ const searchTopRatedCategoryMovies = async (idPrevBtn, idNextBtn, category, elem
   }
 };
 
-// Fonction pour faire défiler le conteneur de films jusqu'à l'index actuel
+// Function to scroll movie container to current index
 const scrollContainerToCurrentIndex = (container, index) => {
   container.scrollTo({
     left: container.children[index].offsetLeft,
@@ -203,14 +203,14 @@ document.addEventListener('DOMContentLoaded', () => {
   searchTopRatedCategoryMovies('prevBtnBestRatingFilms', 'nextBtnBestRatingFilms', '', 'movies-container');
 });
 
-// Définition des catégories et de leurs boutons de navigation correspondants
+// Defining categories and their corresponding navigation buttons
 const categories = [
   { prevBtn: 'prevBtnCategory1', nextBtn: 'nextBtnCategory1', genre: 'Romance', containerId: 'movies-container-romance' },
   { prevBtn: 'prevBtnCategory2', nextBtn: 'nextBtnCategory2', genre: 'Biography', containerId: 'movies-container-biography' },
   { prevBtn: 'prevBtnCategory3', nextBtn: 'nextBtnCategory3', genre: 'Drama', containerId: 'movies-container-drama' }
 ];
 
-// Fonction pour ajouter des écouteurs d'événements aux catégories de films
+// Function to add event listeners to movie categories
 categories.forEach(category => {
   document.addEventListener('DOMContentLoaded', () => {
     searchTopRatedCategoryMovies(category.prevBtn, category.nextBtn, `genre=${category.genre}&`, category.containerId);
@@ -218,6 +218,6 @@ categories.forEach(category => {
 });
 
 function playBestMovie() {
-  // Redirige vers l'URL spécifiée lorsque le bouton est cliqué
+  // Redirects to the specified URL when the button is clicked
   window.location.href = 'https://youtu.be/kjIk-cRU0mk';
 }

@@ -1,4 +1,4 @@
-/* Reset de la mise en page par défaut */
+/* Reset default layout */
 body {
     font-family: Arial, Helvetica, sans-serif;
     margin: 0;
@@ -7,24 +7,24 @@ body {
     overflow-x: hidden;
 }
 
-/* Styles pour la section principale */
+/* Styles for main section */
 main {
     padding-left: 10%;
     padding-right: 10%;
 }
 
-/* Styles pour l'en-tête */
+/* Styles for header */
 header {
-    resize: horizontal; /* Cela semble incorrect, cela ne fonctionne pas sur les éléments de div en HTML. Peut-être un typo? */
+    resize: horizontal; /* This seems incorrect, it doesn't work on HTML div elements. Perhaps a typo? */
     font-size: 1.5vw;
-    border-bottom: 2px solid #7d41d0; /* Couleur de la ligne de fond */
+    border-bottom: 2px solid #7d41d0; /* Background line color */
     width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-/* Styles pour les diviseurs */
+/* Styles for dividers */
 .divider, .little-divider {
     height: 2px;
     background: #6741d0;
@@ -39,11 +39,11 @@ header {
     width: 100px;
 }
 
-/* Styles pour l'état du serveur */
+/* Styles for server status */
 #status {
     margin: 1em;
     float: right;
-    /* Ajout de styles de positionnement pour le conteneur */
+    /* Adding positioning styles for container */
     position: relative;
 }
 
@@ -54,7 +54,7 @@ header {
     display: inline-block;
 }
 
-/* Styles pour l'état en ligne/offline */
+/* Styles for online/offline status */
 .online {
     background-color: green;
 }
@@ -63,14 +63,14 @@ header {
     background-color: red;
 }
 
-/* Styles pour le texte de statut */
+/* Styles for status text */
 #status-text {
     right: 0;
     float: right;
     margin-left: 0.5em;
 }
 
-/* Styles pour les liens */
+/* Styles for links */
 a {
     background: linear-gradient(to bottom, #c850c0, #4158d0);
     -webkit-background-clip: text;
@@ -80,39 +80,39 @@ a {
     float: right;
 }
 
-/* Styles pour les titres */
+/* Styles for headings */
 h1, h2 {
     background: linear-gradient(to bottom, #c850c0, #4158d0);
     -webkit-background-clip: text;
     color: transparent;
 }
 
-/* Styles pour les sous-titres */
+/* Styles for subheadings */
 h3 {
     background: linear-gradient(to bottom, #6f2c6a, #1e2a64);
     -webkit-background-clip: text;
     color: transparent;
 }
 
-/* Styles pour les petits titres */
+/* Styles for small headings */
 h4 {
     color: #b7aad5;
     font-size: medium;
 }
 
-/* Styles pour le titre principal */
+/* Styles for main title */
 #title {
     margin: 1em;
     width: 50%;
     height: auto;
 }
 
-/* Styles pour le conteneur d'en-tête */
+/* Styles for header container */
 #headerBox {
     align-items: center;
 }
 
-/* Styles pour tous les boutons */
+/* Styles for all buttons */
 button {
     margin-top: 2%;
     display: inline-block;
@@ -121,35 +121,35 @@ button {
     text-align: center;
     text-decoration: none;
     font-weight: bold;
-    color: transparent; /* Couleur du texte transparente */
-    background: linear-gradient(to bottom, #6f2c6a, #1e2a64); /* Fond avec dégradé */
+    color: transparent; /* Transparent text color */
+    background: linear-gradient(to bottom, #6f2c6a, #1e2a64); /* Gradient background */
     border: 1px solid transparent;
-    border-image: linear-gradient(to bottom, #6f2c6a, #1e2a64) 1; /* Dégradé pour le liseré */
-    -webkit-background-clip: text; /* Pour appliquer le dégradé au texte */
+    border-image: linear-gradient(to bottom, #6f2c6a, #1e2a64) 1; /* Gradient border */
+    -webkit-background-clip: text; /* To apply gradient to text */
     cursor: pointer;
     transition: all 0.3s;
 }
 
-/* Styles pour les boutons au survol */
+/* Styles for hover buttons */
 button:hover {
-    border-image: linear-gradient(to bottom, #c850c0, #4158d0) 1; /* Dégradé pour le liseré */
-    background: linear-gradient(to bottom, #c850c0, #4158d0); /* Fond avec dégradé */
-    -webkit-background-clip: text; /* Pour appliquer le dégradé au texte */
+    border-image: linear-gradient(to bottom, #c850c0, #4158d0) 1; /* Gradient border */
+    background: linear-gradient(to bottom, #c850c0, #4158d0); /* Gradient background */
+    -webkit-background-clip: text; /* To apply gradient to text */
 }
 
-/* Styles pour la section de meilleur classement */
+/* Styles for best rating section */
 .best-rating {
     margin: 3em;
     width: 90%;
     height: 530px;
 }
 
-/* Styles pour les images */
+/* Styles for images */
 img {
     border-radius: 4%; 
 }
 
-/* Styles pour l'image du meilleur film */
+/* Styles for best movie image */
 #bestMovieImage {
     margin-top: 1%;
     float: right;
@@ -163,7 +163,7 @@ img {
     box-shadow: 0 0 0 2px black;
 }
 
-/* Styles pour la boîte d'information du meilleur film */
+/* Styles for best movie info box */
 #bestMovieBoxInfo {
     margin-right: 3em;
     float: left;
@@ -174,7 +174,7 @@ img {
     position: absolute;
 }
 
-/* Styles pour les sections de films avec le meilleur classement et les catégories */
+/* Styles for best rating and categories film sections */
 .best-rating-films,
 .category-1, 
 .category-2, 
@@ -185,7 +185,7 @@ img {
     height: clamp(100px, 650px, 800px);
 }
 
-/* Styles pour les titres des sections de films */
+/* Styles for film sections titles */
 .best-rating-films h1,
 .category-1 h1, 
 .category-2 h1, 
@@ -193,13 +193,13 @@ img {
     font-size: 25px;
 }
 
-/* Styles pour le conteneur du carrousel de films */
+/* Styles for movies carousel container */
 .carousel-movies {
     width: 95%;
     height: 500px;
 }
 
-/* Styles pour le carrousel de films */
+/* Styles for movies carousel */
 .carousel {
     overflow: hidden;
     white-space: nowrap;
@@ -210,7 +210,7 @@ img {
     margin-left: 4.25%;
 }
 
-/* Styles pour les boutons de contrôle du carrousel */
+/* Styles for carousel control buttons */
 .carousel-btn-right {
     left: 82%;
 }
@@ -231,7 +231,7 @@ img {
     margin-top: 0;
 }
 
-/* Styles pour la boîte de dialogue modale */
+/* Styles for modal dialog box */
 #modal-container {
     display: none;
     z-index: +1;
@@ -244,7 +244,7 @@ img {
     align-items: center;
 }
 
-/* Styles pour le bouton de fermeture de la boîte de dialogue modale */
+/* Styles for modal dialog box close button */
 #modal-closeBtn {
     margin: 1em;
     right: 0;
