@@ -1,5 +1,14 @@
 # JustStreamIt
 
+Project 6 develop a user interface for a Python web application
+
+## Objective:
+This program is a project offered by OpenClassRooms as part of the Python Application Developer course. It involves developing a web application for the association JustStreamIt.
+
+The website presents the best film a list of the 7 best films a list of the 7 best films in the Adventure category a list of the 7 best films in the Animation category a list of the 7 best films in the Biography category A carousel allows you to navigate through each list.
+
+How it works
+The program is written in html5, css3 and Javascript It uses a REST API: OCMovies-API-EN-FR
 
 ## Requirements
 
